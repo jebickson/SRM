@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>JWT Login</h2>
+
+<input id="username" placeholder="Username">
+<button onclick="login()">Login</button>
+<button onclick="profile()">View Profile</button>
+
+<p id="result"></p>
+
+<script>
+let token = "";
+
+async function login() {
+    let r = await fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: username.value})
+    });
+    let d = await r.json();
+    token = d.token;
+    result.innerText = token || JSON.stringify(d);
+}
+
+async function profile() {
+    let r = await fetch('/profile', {
+        headers: {Authorization: 'Bearer ' + token}
+    });
+    result.innerText = JSON.stringify(await r.json());
+}
+</script>
+</body>
+</html>

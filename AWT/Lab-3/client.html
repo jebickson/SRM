@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Client Application</h2>
+    <button onclick="getData()">Get Message</button>
+    <p id="result"></p>
+
+    <script>
+    function getData() {
+        fetch('http://localhost:3000')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('result').innerHTML = data;
+        });
+    }
+    </script>
+</body>
+</html>

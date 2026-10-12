@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>My PWA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { text-align:center; font-family:Arial; }
+</style>
+</head>
+<body>
+<h2>My Offline App</h2>
+<p>This app works offline!</p>
+
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+</html>

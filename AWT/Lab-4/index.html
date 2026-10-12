@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React SPA</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+function App() {
+    const [count, setCount] = React.useState(0);
+
+    return (
+        <div>
+            <h2>Counter Application</h2>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>
+                Click Me
+            </button>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root'))
+    .render(<App />);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<style>
+body { text-align:center; font-family:Arial; }
+input { margin:8px; padding:8px; }
+button { background:blue; color:white; padding:8px; }
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form onsubmit="return validate()">
+    <input id="name" placeholder="Enter Name"><br>
+    <input id="email" placeholder="Enter Email"><br>
+    <input id="pass" type="password" placeholder="Password"><br>
+    <button type="submit">Submit</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+function validate() {
+    let n = document.getElementById("name").value;
+    let e = document.getElementById("email").value;
+    let p = document.getElementById("pass").value;
+
+    if (n == "" || e == "" || p == "") {
+        document.getElementById("msg").innerHTML =
+            "All fields are required";
+        return false;
+    }
+
+    if (!e.includes("@") || p.length < 6) {
+        document.getElementById("msg").innerHTML =
+            "Enter valid email and 6-character password";
+        return false;
+    }
+
+    document.getElementById("msg").innerHTML =
+        "Registration Successful!";
+    return false;
+}
+</script>
+
+</body>
+</html>

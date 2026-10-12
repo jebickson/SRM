@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Student REST API</h2>
+
+<input id="id" placeholder="ID">
+<input id="name" placeholder="Name">
+
+<button onclick="getData()">View</button>
+<button onclick="addData()">Add</button>
+<button onclick="deleteData()">Delete</button>
+
+<pre id="result"></pre>
+
+<script>
+function getData() {
+    fetch('/students')
+    .then(r => r.json())
+    .then(d => result.textContent = JSON.stringify(d));
+}
+
+function addData() {
+    fetch('/students', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id: +id.value, name: name.value})
+    }).then(() => getData());
+}
+
+function deleteData() {
+    fetch('/students/' + id.value, {method: 'DELETE'})
+    .then(() => getData());
+}
+</script>
+</body>
+</html>
